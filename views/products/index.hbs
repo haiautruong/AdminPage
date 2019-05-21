@@ -28,12 +28,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {{#if}}
-                      {{#each data}}
+                      {{#if list}}
+                      {{#each list}}
                       <tr>
-                        <th scope="col">{{this.id}}</th>
+                        <th scope="col">{{this._id}}</th>
                         <td>{{this.name}}</td>
-                        <td>{{this.caterogyCode}}}</td>
+                        <td>{{this.catogoryCode}}</td>
                         <td>{{this.warranty}}</td>
                         <td>{{this.price}}</td>
                         <td>

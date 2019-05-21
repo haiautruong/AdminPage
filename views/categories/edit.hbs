@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="col-sm-12">
+        <form>
+            <div class="form-group">
+                {{#with category}}
+                <label for="nameCategory">Tên danh mục</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="nameCategory"
+                    value="{{this.name}}">
+                {{/with}}
+            </div>
+            <button type="submit" class="btn btn-success form-control">Cập nhật</button>
+        </form>
+    </div>
+</div>

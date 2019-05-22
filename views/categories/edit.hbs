@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="col-sm-12">
+        <h2 class="text-uppercase">Chỉnh sửa danh mục</h2>
+        <form action="POST">
+            {{#with category}}
+            <div class="form-group">
+                <label for="nameCategory">Tên danh mục</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="nameCategory"
+                    value="abc">
+            </div>
+            {{/with}}
+            <button type="submit" class="btn btn-success form-control">Cập nhật</button>
+        </form>
+    </div>
+</div>

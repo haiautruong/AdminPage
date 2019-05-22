@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="col-sm-12">
+        <h2 class="text-uppercase">Thêm sản phẩm mới</h2>
+        <form action="POST">
+            <div class="form-group">
+                <label for="name">Tên sản phẩm</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name">
+            </div>
+            <div class="form-group">
+                <label for="category">Danh mục</label>
+                <select class="custom-select form-control" id="selectCategory">
+                    {{#if list}}
+                    {{#each list}}
+                    <option>{{this.name}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Giá</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="price">
+            </div>
+            <div class="form-group">
+                <label for="warranty">Nhà sản xuất</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="warranty">
+            </div>
+            <div class="form-group">
+                <label for="image">Link hình ảnh</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="image">
+            </div>
+            <div class="form-group">
+                <label for="screen">Màn hình</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="screen">
+            </div>
+            <div class="form-group">
+                <label for="ram">RAM</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="ram">
+            </div>
+            <div class="form-group">
+                <label for="cpu">CPU</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="cpu">
+            </div>
+            <div class="form-group">
+                <label for="gpu">GPU</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="gpu">
+            </div>
+            <div class="form-group">
+                <label for="disk">Disk</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="disk">
+            </div>
+            <div class="form-group">
+                <label for="weight">Khối lượng</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="weight">
+            </div>
+            <div class="form-group">
+                <label for="more-info">Thông tin khác</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="more-infor">
+            </div>
+            <button type="submit" class="btn btn-success form-control">Thêm</button>
+        </form>
+    </div>
+</div>

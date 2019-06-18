@@ -2,10 +2,20 @@ const dbs = require('../dbs/index');
 let category = dbs.category;
 
 exports.index = function(req, res){
-    category.find().exec((err, list) =>{
-        if(err) item.push(err);
-        res.render('categories/index', {list});
-    })
+    if (req.isAuthenticated()) {
+        category.getAllCategories().exec((err, list) => {
+            if(err){
+                console.log("all product err: ", err);
+            }
+            else{
+                res.render('categories/index', {list});
+            }
+        })
+    }
+    else {
+        req.session.returnTo = '/categories';
+        res.redirect('/')
+    }
 }
 
 exports.add = function(req, res){

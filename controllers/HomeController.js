@@ -3,8 +3,24 @@ exports.index = (req, res) => {
         return res.redirect('/');
     } else {
         let mess = req.flash('message')[0];
-        console.log('mess', mess);
-        res.render('home/login', {loginNotify: mess });
+        let data = req.flash('data')[0];
+
+        let notify = {
+            pass: null,
+            username: null,
+            save: null
+        };
+
+        if (mess === 'password') {
+            notify.pass = 'Mật khẩu không trùng khớp'
+        }
+        else if (mess === 'username') {
+            notify.username = 'Tên đăng nhập đã tồn tại'
+        }
+        else if (mess === 'save' || mess == 'disfull') {
+            notify.save = 'Có lỗi xảy ra @@! Xin thử lại'
+        }
+        res.render('home/login', {notify});
     }
 }
 
@@ -17,5 +33,11 @@ exports.forget = (req, res) => {
 }
 
 exports.dashboard = (req, res) => {
-    res.render('home/index');
+    if (req.isAuthenticated()) {
+        res.render('home/index');
+    }
+    else {
+        req.session.returnTo = '/dashboard';
+        res.redirect('/')
+    }
 }

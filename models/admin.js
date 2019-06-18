@@ -1,20 +1,22 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 
 const AdminSchema = new mongoose.Schema(
     {
-        email: {type: String, required: true, lowercase: true, unique: true},
+        username: {type: String, required: true, lowercase: true, unique: true},
         password: {type: String, required: true},
-        name: {type: String},
+        fullname: {type: String},
         phone: {type: String, required: true},
-        address: {type: String, required: true}
+        address: {type: String, required: true},
+        email: {type: String, required: true},
     },
     
     {timestamps: true}
 )
 
 //authenticate input against database
-AdminSchema.statics.authenticate = function (email, password, callback) {
-    Admin.findOne({ email: email })
+AdminSchema.statics.authenticate = function (username, password, callback) {
+    Admin.findOne({ username: username })
       .exec(function (err, Admin) {
         if (err) {
           return callback(err)
@@ -46,6 +48,6 @@ AdminSchema.statics.authenticate = function (email, password, callback) {
   });
   
   
-  var Admin = mongoose.model('Admin', AdminSchema);
+  var Admin = mongoose.model('admin', AdminSchema);
 
 module.exports = Admin;

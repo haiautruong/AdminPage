@@ -1,32 +1,89 @@
 const mongoose = require("mongoose");
 
-const product = new mongoose.Schema(
+productSchema = mongoose.Schema(
     {
-        brandCode: Number,
-        categoryCode: Number,
         name: String,
         price: Number,
-        vote: Number,
-        available: Number,
-        voucher: String,
-        cpu: String,
+        image: String,
+        categoryCode: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'category'
+        },
+        brandCode: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'brand'
+        },
+        screen: String,
         ram: String,
+        cpu: String,
+        more_info: String,
+        voucher: String,
+        pin_battery: String,
         disk: String,
         screen: String,
-        gpu: String,
-        audio: String,
-        apdapter: String,
-        pin_battery: String,
-        keyboard: String,
-        more_info: String,
-        weight: String,
         warranty: String,
-        image: String,
-        view: Number,
-        sell: Number,
-        addDate: String
+        view: Number
     },
-    {timestamps: true}
+    {
+        timestamps: true,
+        versionKey: false
+    }
 )
 
-module.exports = product;
+// productSchema.statics.getAllProduct = () => {
+//     return Product.find()
+//         .populate('categoryCode')
+//         .populate('brandCode');
+// }
+
+productSchema.statics.getProducts = (type, id) => {
+
+    let query = {};
+    if (type == 'category') {
+        query = { categoryCode: id };
+    } else if (type == 'brand') {
+        query = { brandCode: id };
+    }
+
+    return Product.find(query)
+        .populate('categoryCode')
+        .populate('brandCode');
+}
+
+productSchema.statics.getProduct = (id) => {
+    return Product.findById(id)
+        .populate('categoryCode')
+        .populate('brandCode');
+}
+
+productSchema.statics.getProducts = (type, id, perPage, pageNumber) => {
+
+    let query = {};
+
+    if (type == 'category') {
+        query = { categoryCode: id };
+    } else if (type == 'brand') {
+        query = { brandCode: id };
+    }
+
+    return Product.find(query)
+        .limit(perPage)
+        .skip(perPage * (pageNumber - 1))
+        .populate('categoryCode')
+        .populate('brandCode');
+}
+
+productSchema.statics.countAllProducts = (type, id) => {
+    let query = {};
+    if (type == 'category') {
+        query = { categoryCode: id };
+    } else if (type == 'brand') {
+        query = { brandCode: id };
+    }
+
+    return Product.countDocuments(query);
+}
+
+let Product = mongoose.model('product', productSchema);
+
+module.exports = Product;

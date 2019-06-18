@@ -1,9 +1,19 @@
 const mongoose = require("mongoose");
 
-const category = new mongoose.Schema(
+const CategorySchema = new mongoose.Schema(
     {
         name: String
+    },
+    {
+        timestamps: true,
+        versionKey: false
     }
 )
 
-module.exports = category;
+CategorySchema.statics.getAllCategories = () => {
+    return Category.find();
+}
+
+const Category = mongoose.model('category', CategorySchema);
+
+module.exports = Category;

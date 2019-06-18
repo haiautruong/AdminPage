@@ -4,7 +4,6 @@ let category = dbs.category;
 exports.index = function(req, res){
     category.find().exec((err, list) =>{
         if(err) item.push(err);
-        console.log('listCategory', list);
         res.render('categories/index', {list});
     })
 }
@@ -32,6 +31,5 @@ exports.edit = function(req, res){
         name: req.params.name
     }
 
-    console.log('name', category);
     res.render('categories/edit', {category});
 }

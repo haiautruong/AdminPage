@@ -11,6 +11,8 @@ const controller = require("../controllers/HomeController");
 
 router.get("/", (req,res) => controller.index(req,res));
 router.get("/signup", (req,res) => controller.signup(req,res));
+router.get("/update", (req,res) => controller.update(req,res));
+
 router.get("/forget", (req,res) => controller.forget(req,res));
 
 router.post("/", passport.authenticate('login'), (req, res) => {

@@ -1,5 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/user');
+const Admin = require('../models/admin');
 const bcrypt = require('bcrypt');
 
 const serializeUser = (user, done) => {
@@ -7,59 +7,58 @@ const serializeUser = (user, done) => {
 }
 
 const deserializeUser = (id, done) => {
-    User.findById(id, (err, user) => {
+    Admin.findById(id, (err, user) => {
         done(err, user);
     });
 }
 
 const signupStrategy = new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true
-}, (req, email, password, done) => {
+}, (req, username, password, done) => {
     const confirmPassword = req.body.confirm_password;
-    const username = req.body.username;
     const phone = req.body.phone;
     const address = req.body.address;
-    const cmnd = req.body.cmnd;
+    const fullname = req.body.fullname;
+    const email = req.body.email;
 
 
-    if (email && password && confirmPassword && username && phone && address && cmnd) {
+
+    if (username && password && confirmPassword && email && phone && address && fullname) {
         let data = {
-            email,
+            username,
             password,
             confirmPassword,
-            username,
             phone,
             address,
-            cmnd
+            fullname,
+            email
         }
 
         if (password != confirmPassword) {
             return done(null, false, req.flash('message', 'pass'), req.flash('data', data));
         }
         
-        User.findOne({ 'email': email }, (err, user) => {
+        Admin.findOne({ 'uasername': username}, (err, user) => {
             if (user) {
-                return done(null, false, req.flash('message', 'email'), req.flash('data', data));
+                return done(null, false, req.flash('message', 'uasername'), req.flash('data', data));
             }
             
-            const newUser = new User({
-                email: email,
+            const newAdmin = new Admin({
+                username: username,
                 password: password,
-                name: username,
+                email: email,
                 phone: phone,
                 address: address,
-                cmnd: cmnd
+                fullname: fullname
             });
-
-            console.log(newUser);
-            newUser.save(err => {
+            newAdmin.save(err => {
                 if (err) {
                     console.log('err', err);
                     return done(null, false, req.flash('message', 'save'));
                 } else {
-                    return done(null, newUser);
+                    return done(null, newAdmin);
                 }
             });
         });
@@ -70,25 +69,23 @@ const signupStrategy = new LocalStrategy({
 });
 
 const loginStrategy = new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true,
-}, (req, email, password, done) => {
-    console.log("CALLLLL", email, password);
+}, (req, username, password, done) => {
 
-    User.findOne({ 'email': email }, (err, user) => {
+    Admin.findOne({ 'username': username }, (err, user) => {
         if (err) {
             done(err);
         }
 
         if (!user) {
-            console.log('User not found email ', email);
-            return done(null, false, req.flash('message', 'Tên đăng nhập hoặc mật khẩu không chính xác!'));
+            console.log('Admin not found username', username);
+            return done(null, false, req.flash('message', 'username'));
         }
-
         bcrypt.compare(password, user.password, (err, result) => {
             if (err || result == false) {
-                return done(null, false, req.flash('message', 'Tên đăng nhập hoặc mật khẩu không chính xác!'));
+                return done(null, false, req.flash('message', 'password'));
             }
 
             return done(null, user);

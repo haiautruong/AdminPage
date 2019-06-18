@@ -45,7 +45,9 @@ productSchema.statics.getProducts = (type, id) => {
 }
 
 productSchema.statics.getAll = () => {
-    return Product.find();
+    return Product.find()
+        .populate('categoryCode')
+        .populate('brandCode')
 }
 
 productSchema.statics.getProduct = (id) => {

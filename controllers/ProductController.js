@@ -1,6 +1,5 @@
 const dbs = require('../dbs/index');
 let product = dbs.product;
-let category = dbs.category;
 exports.index = function(req, res){
     if (req.isAuthenticated()) {
         product.getAll().exec((err, list) => {

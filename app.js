@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars');
+const productHelpers = require('./helper/productHelper');
+
 
 const app = express();
 const passport = require('passport');
@@ -14,7 +16,12 @@ var bodyParser = require('body-parser');
 
 app.engine('hbs', exphbs({
   defaultLayout: 'admin',
-  layoutsDir: 'views/layouts'
+  layoutsDir: 'views/layouts',
+  helpers: {
+    formatDate: productHelpers.formatDate,
+    formatStatus: productHelpers.formatStatus,
+    formatCurrency: productHelpers.formatCurrency
+  }
 }));
 
 // view engine setup
@@ -61,12 +68,12 @@ const usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

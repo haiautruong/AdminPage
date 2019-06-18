@@ -32,7 +32,6 @@ exports.create = function (req, res) {
         }
         else res.redirect('./');
     });
-    
 };
 
 exports.edit = function(req, res){

@@ -1,42 +1,17 @@
-<div class="container">
-    <div class="col-sm-12">
-        <button
-            type="button"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#login"
-            data-whatever="">Login</button>
-
-        <div
-            class="modal fade"
-            id="login"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Đăng nhập</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/login" method="POST">
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Email</label>
-                                <input type="email" class="form-control" name="email" id="email"></div>
-                                <div class="form-group">
-                                    <label for="password" class="col-form-label">Mật khẩu</label>
-                                    <input type="password" class="form-control" name="password" id="password"></div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="row" style="padding: 10% 30%; text-align: center">
+    <h3>Đăng nhập</h3>
+    <form class="col-sm-12 offset-md-1" style="text-align: left">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tên đăng nhập</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Email">
+            <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Mật khẩu</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with anyone else.</small>
+        </div>
+        <button type="submit" class="btn btn-primary form-control"  >Đăng nhập</button>
+    </form>
 </div>

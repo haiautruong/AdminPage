@@ -5,8 +5,7 @@ const router = express.Router();
  * Routing for home
  */
 
-const HomeController = require("../controllers/HomeController");
-const controller = new HomeController();
+const controller = require("../controllers/HomeController");
 
 router.get("/", (req,res) => controller.index(req,res));
 

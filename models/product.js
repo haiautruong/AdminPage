@@ -30,12 +30,6 @@ productSchema = mongoose.Schema(
     }
 )
 
-// productSchema.statics.getAllProduct = () => {
-//     return Product.find()
-//         .populate('categoryCode')
-//         .populate('brandCode');
-// }
-
 productSchema.statics.getProducts = (type, id) => {
 
     let query = {};
@@ -48,6 +42,10 @@ productSchema.statics.getProducts = (type, id) => {
     return Product.find(query)
         .populate('categoryCode')
         .populate('brandCode');
+}
+
+productSchema.statics.getAll = () => {
+    return Product.find();
 }
 
 productSchema.statics.getProduct = (id) => {

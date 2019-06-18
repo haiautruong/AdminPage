@@ -2,9 +2,8 @@ exports.index = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect('/');
     } else {
-        let mess = req.flash('message')[0];
-        console.log('mess', mess);
-        res.render('home/login', {loginNotify: mess });
+        console.log("login")
+        res.render('home/login');
     }
 }
 

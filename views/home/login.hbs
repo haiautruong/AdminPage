@@ -1,6 +1,6 @@
 <div class="row" style="padding: 10% 30%; text-align: center">
     <h3>Đăng nhập</h3>
-    <form class="col-sm-12 offset-md-1" style="text-align: left">
+    <form action="/login" method="POST" class="col-sm-12 offset-md-1" style="text-align: left">
         <div class="form-group">
             <label for="exampleInputEmail1">Tên đăng nhập</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -12,6 +12,10 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with anyone else.</small>
         </div>
-        <button type="submit" class="btn btn-primary form-control"  >Đăng nhập</button>
+        <div>
+            <a class="pull-left" href="/signup">Đăng ký</a>
+            <a href="/forget" class="pull-right">Quên mật khẩu</a>
+        </div>
+        <button style="margin-top: 10px" type="submit" class="btn btn-primary form-control"  >Đăng nhập</button>
     </form>
 </div>

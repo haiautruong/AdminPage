@@ -33,5 +33,11 @@ exports.forget = (req, res) => {
 }
 
 exports.dashboard = (req, res) => {
-    res.render('home/index');
+    if (req.isAuthenticated()) {
+        res.render('home/index');
+    }
+    else {
+        req.session.returnTo = '/dashboard';
+        res.redirect('/')
+    }
 }

@@ -26,6 +26,13 @@ transactionSchema.statics.gettransaction = (idUser) => {
         });
 }
 
+transactionSchema.statics.getAll = () => {
+    return Transaction.find()
+        .sort({
+            createdAt: -1
+        });
+}
+
 let Transaction = mongoose.model('transaction', transactionSchema);
 
 module.exports = Transaction;

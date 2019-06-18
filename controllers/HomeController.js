@@ -12,6 +12,10 @@ exports.signup = (req, res) => {
     res.render('home/signup');
 }
 
+exports.forget = (req, res) => {
+    res.render('home/forget');
+}
+
 exports.dashboard = (req, res) => {
     res.render('home/index');
 }

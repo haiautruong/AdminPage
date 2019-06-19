@@ -4,6 +4,9 @@
         <form action="" method="POST">
             <div class="form-group">
                 <label for="nameCategory">Tên danh mục</label>
+                {{#if mess}}
+                <span class="pull-right">{{mess}}. Mời nhập danh mục khác</span>
+                {{/if}}
                 <input
                     type="text"
                     class="form-control"

@@ -12,25 +12,41 @@ exports.index = function (req, res) {
 }
 
 exports.add = function (req, res) {
-    res.render('categories/add');
+    let mess = req.flash('message')[0];
+    res.render('categories/add', {mess});
 }
 
 exports.create = function (req, res) {
     if (req.isAuthenticated()) {
         let name = req.body.newcategory;
-        let col = new category({
-            name
-        });
-
-        col.save(function (err) {
+        category.findByName(name).exec((err, docs) => {
             if (err) {
-                res.redirect('/categories/add');
+                console.log("err find category: ", errr);
             }
             else {
-                res.redirect('/categories');
+                if (docs){
+                    req.flash('message', "Danh mục đã tồn tại");
+                    res.redirect('/categories/add');
+                }
+                else{
+                    let col = new category({
+                        name
+                    });
+                    col.save(function (err) {
+                        if (err) {
+                            res.redirect('/categories/add');
+                        }
+                        else {
+                            res.redirect('/categories');
+                        }
+                    });
+                }
             }
-        });
+
+        })
+
         
+
     }
     else {
         req.session.returnTo = '/categories';

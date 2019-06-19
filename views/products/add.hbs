@@ -1,20 +1,21 @@
 <div class="container">
     <div class="col-sm-12">
         <h2 class="text-uppercase">Thêm sản phẩm mới</h2>
-        <form action="POST">
+        <span class="pull-right">{{mess}}. Mời nhập danh mục khác</span>
+        <form action="/products/add" method="POST">
             <div class="form-group">
                 <label for="name">Tên sản phẩm</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="name">
+                    name="name">
             </div>
             <div class="form-group">
                 <label for="category">Danh mục</label>
-                <select class="custom-select form-control" id="selectCategory">
-                    {{#if list}}
-                    {{#each list}}
-                    <option>{{this.name}}</option>
+                <select class="custom-select form-control" name="selectCategory">
+                    {{#if listCategories}}
+                    {{#each listCategories}}
+                    <option>{{this.name}} - {{_id}}</option>
                     {{/each}}
                     {{/if}}
                 </select>
@@ -24,71 +25,83 @@
                 <input
                     type="text"
                     class="form-control"
-                    id="price">
+                    name="price">
             </div>
             <div class="form-group">
-                <label for="warranty">Nhà sản xuất</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="warranty">
+                <label for="brands">Nhà sản xuất</label>
+                <select class="custom-select form-control" name="selectBrands">
+                    {{#if listBrands}}
+                    {{#each listBrands}}
+                    <option>{{this.name}} - {{_id}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select>
+                
             </div>
             <div class="form-group">
                 <label for="image">Link hình ảnh</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="image">
+                    name="image">
             </div>
             <div class="form-group">
                 <label for="screen">Màn hình</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="screen">
+                    name="screen">
             </div>
             <div class="form-group">
                 <label for="ram">RAM</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="ram">
+                    name="ram">
             </div>
             <div class="form-group">
                 <label for="cpu">CPU</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="cpu">
+                    name="cpu">
             </div>
             <div class="form-group">
-                <label for="gpu">GPU</label>
+                <label for="voucher">Quà tặng</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="gpu">
+                    name="voucher">
             </div>
             <div class="form-group">
                 <label for="disk">Disk</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="disk">
+                    name="disk">
             </div>
             <div class="form-group">
-                <label for="weight">Khối lượng</label>
+                <label for="warranty">Bảo hành</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="weight">
+                    name="warranty">
             </div>
             <div class="form-group">
-                <label for="more-info">Thông tin khác</label>
+                <label for="pin_battery">Pin</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="more-infor">
+                    name="pin_battery">
             </div>
+            <div class="form-group">
+                <label for="more_info">Thông tin khác</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="more_info">
+            </div>
+
             <button type="submit" class="btn btn-success form-control">Thêm</button>
         </form>
     </div>

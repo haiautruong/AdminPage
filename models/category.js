@@ -9,6 +9,11 @@ const CategorySchema = new mongoose.Schema(
         versionKey: false
     }
 )
+CategorySchema.statics.findByName = (name) => {
+    return Category.find({
+        name: name
+    });
+}
 
 CategorySchema.statics.getAllCategories = () => {
     return Category.find();

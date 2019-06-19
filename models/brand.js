@@ -9,6 +9,15 @@ const brandSchema = new mongoose.Schema(
         versionKey: false
     }
 )
+brandSchema.statics.getAllBrands = () => {
+    return Brand.find();
+}
+
+brandSchema.statics.findByName = (name) => {
+    return Brand.find({
+        name: name
+    });
+}
 
 brandSchema.statics.getAPage = (perPage, pageNumber) => {
     return Brand.find()

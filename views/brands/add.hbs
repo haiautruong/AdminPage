@@ -1,17 +1,17 @@
 <div class="container">
     <div class="col-sm-12">
-        <h2 class="text-uppercase">Thêm danh mục mới</h2>
-        <form action="/categories/add" method="POST">
+        <h2 class="text-uppercase">Thêm nhà sản xuất mới</h2>
+        <form action="/brands/add" method="POST">
             <div class="form-group">
-                <label for="nameCategory">Tên danh mục</label>
+                <label for="newBrand">Tên nhà sản xuất</label>
                 {{#if mess}}
-                <span class="pull-right">{{mess}}. Mời nhập danh mục khác</span>
+                <span class="pull-right">{{mess}}. Mời nhập tên khác</span>
                 {{/if}}
                 <input
                     type="text"
                     class="form-control"
-                    name="newcategory"
-                    placeholder="Nhập tên danh mục">
+                    name="newBrand"
+                    placeholder="Nhập tên nhà sản xuất">
             </div>
             <button type="submit" class="btn btn-success form-control">Thêm</button>
         </form>

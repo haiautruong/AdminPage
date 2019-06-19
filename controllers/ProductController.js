@@ -7,7 +7,7 @@ exports.index = function(req, res){
                 console.log("all product err: ", err);
             }
             else{
-                res.render('products/index', {list});
+                res.render('products/index');
             }
         })
     }

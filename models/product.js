@@ -56,6 +56,14 @@ productSchema.statics.getProduct = (id) => {
         .populate('brandCode');
 }
 
+productSchema.statics.getAPage = (perPage, pageNumber) => {
+    return Product.find()
+        .limit(perPage)
+        .skip(perPage * (pageNumber - 1))
+        .populate('categoryCode')
+        .populate('brandCode');
+}
+
 productSchema.statics.getProducts = (type, id, perPage, pageNumber) => {
 
     let query = {};
@@ -71,6 +79,9 @@ productSchema.statics.getProducts = (type, id, perPage, pageNumber) => {
         .skip(perPage * (pageNumber - 1))
         .populate('categoryCode')
         .populate('brandCode');
+}
+productSchema.statics.countAll = () => {
+    return Product.countDocuments();
 }
 
 productSchema.statics.countAllProducts = (type, id) => {

@@ -33,6 +33,16 @@ transactionSchema.statics.getAll = () => {
         });
 }
 
+transactionSchema.statics.countAll = () => {
+    return Transaction.countDocuments();
+}
+
+transactionSchema.statics.getAPage = (perPage, pageNumber) => {
+    return Transaction.find()
+        .limit(perPage)
+        .skip(perPage * (pageNumber - 1))
+}
+
 let Transaction = mongoose.model('transaction', transactionSchema);
 
 module.exports = Transaction;

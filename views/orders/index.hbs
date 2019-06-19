@@ -14,38 +14,14 @@
             <th>Hành động</th>
           </tr>
         </thead>
-        <tbody>
-          {{#if list}}
-          {{#each list}}
-          <tr>
-            <th scope="col">{{this._id}}</th>
-            <td>{{this.idUser}}</td>
-            <td>{{this.address}}</td>
-            <td>
-              {{#each listProducts}}
-              <div style="border-top: 1px solid gray">
-
-                <p>Mã sản phẩm: {{idProduct}}</p>
-                <p>Tên sản phẩm: {{nameProduct}}</p>
-                <p>Số lượng: {{quantity}}</p>
-                <p>Đơn giá: {{formatCurrency price}}</p>
-              </div>
-              {{/each}}
-              </td>
-            <td>{{formatCurrency this.total}}</td>
-            <td>{{formatStatus this.status}}</td>
-            <td>
-              <div class="btn-group">
-                <a href="/users/edit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>
-                  Edit</a>
-                <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-              </div>
-            </td>
-          </tr>
-          {{/each}}
-          {{/if}}
+        <tbody id="orders">
+          {{!-- list orders --}}
         </tbody>
       </table>
+      <div style="text-align: center">
+        <ul class="reviews-pagination" id="pagination-orders">
+			  </ul>
+      </div>
     </div>
   </div>
 </div>

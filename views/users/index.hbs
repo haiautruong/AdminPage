@@ -14,28 +14,14 @@
             <th>Hành động</th>
           </tr>
         </thead>
-        <tbody>
-          {{#if list}}
-          {{#each list}}
-          <tr>
-            <th scope="col">{{this._id}}</th>
-            <td>{{this.email}}</td>
-            <td>{{this.name}}</td>
-            <td>{{this.address}}</td>
-            <td>{{this.cmnd}}</td>
-            <td>{{this.phone}}</td>
-            <td>
-              <div class="btn-group">
-                <a href="/users/edit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>
-                  Edit</a>
-                <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-              </div>
-            </td>
-          </tr>
-          {{/each}}
-          {{/if}}
+        <tbody id="users">
+          {{!-- list users --}}
         </tbody>
       </table>
+      <div style="text-align: center">
+        <ul class="reviews-pagination" id="pagination-users">
+			  </ul>
+      </div>
     </div>
   </div>
 </div>

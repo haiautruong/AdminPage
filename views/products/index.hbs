@@ -16,27 +16,12 @@
             <th>Hành động</th>
           </tr>
         </thead>
-        <tbody>
-          {{#if list}}
-          {{#each list}}
-          <tr>
-            <th scope="col">{{this._id}}</th>
-            <td>{{this.name}}</td>
-            <td>{{this.categoryCode.name}}</td>
-            <td>{{this.brandCode.name}}</td>
-            <td>{{formatCurrency this.price}}</td>
-            <td>
-              <div class="btn-group">
-                <a href="/products/edit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>
-                  Edit</a>
-                <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-              </div>
-            </td>
-          </tr>
-          {{/each}}
-          {{/if}}
+        <tbody id="products">
+          {{!-- list products --}}
         </tbody>
       </table>
+      <ul class="reviews-pagination" id="pagination-products">
+			</ul>
     </div>
   </div>
 </div>

@@ -21,6 +21,16 @@ UserSchema.statics.getAll = () => {
   return User.find();
 }
 
+UserSchema.statics.countAll = () => {
+  return User.countDocuments();
+}
+
+UserSchema.statics.getAPage = (perPage, pageNumber) => {
+  return User.find()
+      .limit(perPage)
+      .skip(perPage * (pageNumber - 1))
+}
+
 var User = mongoose.model('User', UserSchema);
 
 module.exports = User;

@@ -1,37 +1,27 @@
 <div class="container">
-            <div class="col-sm-12">
-                <h2 class="text-uppercase"><span class="glyphicon glyphicon-list-alt"></span> Danh sách danh mục</h2>
-                <div>
-                  <a href="/categories/add" class="btn btn-success"><span class="fa fa-plus-circle"></span> Add</a> 
-                </div>
-                <div class="table-responsive">
-                  <table class="table table-striped table-bordered">
-                    <thead>
-                      <tr class="success">
-                        <th>Mã danh mục</th>
-                        <th>Tên danh mục</th>
-                        <th>Hành động</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {{#if list}}
-                      {{#each list}}
-                      <tr>
-                        <th scope="col">{{this._id}}</th>
-                        <td>{{this.name}}</td>
-                        <td>
-                          <div class="btn-group">
-                            <a href="/categories/edit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
-                            <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                          </div>
-                        </td>
-                      </tr>
-                      {{/each}}
-                      {{/if}}
-                    </tbody>
-                  </table>
-                </div>
-            </div>
-        </div>
+  <div class="col-sm-12">
+    <h2 class="text-uppercase"><span class="glyphicon glyphicon-list-alt"></span> Danh sách danh mục</h2>
+    <div>
+      <a href="/categories/add" class="btn btn-success"><span class="fa fa-plus-circle"></span> Add</a>
     </div>
-    
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr class="success">
+            <th>Mã danh mục</th>
+            <th>Tên danh mục</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="categories">
+          {{!-- list categories --}}
+        </tbody>
+      </table>
+      <div style="text-align: center">
+        <ul class="reviews-pagination" id="pagination-categories">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

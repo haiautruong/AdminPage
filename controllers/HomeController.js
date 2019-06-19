@@ -32,6 +32,18 @@ exports.forget = (req, res) => {
     res.render('home/forget');
 }
 
+exports.update = (req, res) => {
+    if (req.isAuthenticated()) {
+        let userSession = req.user;
+        console.log("user", userSession)
+        res.render('home/updateInfo', {userSession});
+    }
+    else {
+        req.session.returnTo = '/update';
+        res.redirect('/')
+    }
+}
+
 exports.dashboard = (req, res) => {
     if (req.isAuthenticated()) {
         res.render('home/index');

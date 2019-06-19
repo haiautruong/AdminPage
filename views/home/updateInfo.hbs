@@ -1,0 +1,40 @@
+<div class="row" style="padding: 10% 30%; text-align: center">
+    <h3>Cập nhật thông tin tài khoản</h3>
+    <form action="/update" method="POST" class="col-sm-12 offset-md-1" style="text-align: left">
+        <div class="form-group">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" value="admin" readonly>
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" name="password" value="{{userSession.password}}" required>
+            <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with
+                anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{userSession.email}}" aria-describedby="emailHelp" required>
+            <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with
+                anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="username">Họ và tên</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" value="{{userSession.fullname}}" required>
+            <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with
+                anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="address">Địa chỉ</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{userSession.address}}">
+            <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with
+                anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" class="form-control" id="phone" name="phone" value="{{userSession.phone}}">
+            <small id="emailHelp" class="form-text text-muted" style="display: none">We'll never share your email with
+                anyone else.</small>
+        </div>
+        <button type="submit" class="btn btn-primary form-control">Cập nhật</button>
+    </form>
+</div>

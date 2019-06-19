@@ -134,7 +134,8 @@ $(document).ready(function () {
     }
 
     $(`#pagination-${type}`).pagination({
-        dataSource: `http://localhost:3000/api/pagination?type=${type}`,
+        //dataSource: `http://localhost:3000/api/pagination?type=${type}`,
+        dataSource: `http://admin-page-shop.herokuapp.com/api/pagination?type=${type}`, 
         locator: `${type}`,
         totalNumberLocator: function (response) {
             return response.total;

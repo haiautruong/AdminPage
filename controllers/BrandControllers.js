@@ -13,7 +13,7 @@ exports.index = function (req, res) {
 
 exports.create = function (req, res) {
     if (req.isAuthenticated()) {
-        let name = req.body.newcategory;
+        let name = req.body.newBrand;
         Brand.findByName(name).exec((err, docs) => {
             if (err) {
                 console.log("err find brand: ", errr);

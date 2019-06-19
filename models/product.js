@@ -20,7 +20,6 @@ productSchema = mongoose.Schema(
         voucher: String,
         pin_battery: String,
         disk: String,
-        screen: String,
         warranty: String,
         view: Number
     },
@@ -29,6 +28,11 @@ productSchema = mongoose.Schema(
         versionKey: false
     }
 )
+productSchema.statics.findByName = (name) => {
+    return Product.find({
+        name: name
+    });
+}
 
 productSchema.statics.getProducts = (type, id) => {
 

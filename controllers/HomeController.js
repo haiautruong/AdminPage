@@ -35,13 +35,22 @@ exports.forget = (req, res) => {
 exports.update = (req, res) => {
     if (req.isAuthenticated()) {
         let userSession = req.user;
-        console.log("user", userSession)
         res.render('home/updateInfo', {userSession});
     }
     else {
         req.session.returnTo = '/update';
         res.redirect('/')
     }
+}
+
+exports.logout = (req, res) => {
+    req.logout();
+    res.redirect('/');
+}
+
+exports.saveUpdate = (req, res) => {
+    console.log("Cập nhật thành công");
+    res.redirect('/update');
 }
 
 exports.dashboard = (req, res) => {

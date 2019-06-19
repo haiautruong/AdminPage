@@ -10,8 +10,11 @@ const passport = require('passport');
 const controller = require("../controllers/HomeController");
 
 router.get("/", (req,res) => controller.index(req,res));
+router.get("/logout", (req,res) => controller.logout(req,res));
 router.get("/signup", (req,res) => controller.signup(req,res));
 router.get("/update", (req,res) => controller.update(req,res));
+router.post("/update", (req,res) => controller.saveUpdate(req,res));
+
 
 router.get("/forget", (req,res) => controller.forget(req,res));
 

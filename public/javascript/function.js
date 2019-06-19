@@ -1,6 +1,6 @@
 const PRODUCTS = 'products';
 const CATEGORY = 'categories';
-const BRANDS = 'brand';
+const BRANDS = 'brands';
 const USERS = 'users';
 const TRANSACTIONS = 'orders';
 
@@ -91,6 +91,21 @@ function categories(id, name) {
     return html;
 }
 
+function brands(id, name) {
+    let html = `<tr>
+    <th scope="col">${id}</th>
+    <td>${name}</td>
+    <td>
+      <div class="btn-group">
+        <a href="/brands/edit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
+        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+      </div>
+    </td>
+  </tr>`
+
+    return html;
+}
+
 function users(id, email, name, address, cmnd, phone) {
     let html = `<tr>
     <th scope="col">${id}</th>
@@ -155,6 +170,13 @@ $(document).ready(function () {
                 })
 
             }
+            else if (type === BRANDS) {
+                pageContent.forEach(elm => {
+                    html += brands(elm._id, elm.name);
+                })
+
+            }
+            
             $(`#${type}`).html(html);
         }
     });

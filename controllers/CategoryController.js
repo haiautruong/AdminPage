@@ -3,14 +3,7 @@ let category = dbs.category;
 
 exports.index = function(req, res){
     if (req.isAuthenticated()) {
-        category.getAllCategories().exec((err, list) => {
-            if(err){
-                console.log("all product err: ", err);
-            }
-            else{
-                res.render('categories/index', {list});
-            }
-        })
+        res.render('categories/index');
     }
     else {
         req.session.returnTo = '/categories';

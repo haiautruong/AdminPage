@@ -70,6 +70,9 @@ app.use('/users', usersRouter);
 const ordersRouter = require('./routes/orders');
 app.use('/orders', ordersRouter);
 
+const brandsRouter = require('./routes/brands');
+app.use('/brands', brandsRouter);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

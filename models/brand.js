@@ -10,10 +10,6 @@ const brandSchema = new mongoose.Schema(
     }
 )
 
-brandSchema.statics.getAllBrands = () => {
-    return Brand.find();
-}
-
 brandSchema.statics.getAPage = (perPage, pageNumber) => {
     return Brand.find()
         .limit(perPage)

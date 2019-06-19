@@ -8,7 +8,7 @@ const User = dbs.user;
 
 const PRODUCTS = 'products';
 const CATEGORY = 'categories';
-const BRANDS = 'brand';
+const BRANDS = 'brands';
 const USERS = 'users';
 const TRANSACTIONS = 'orders';
 

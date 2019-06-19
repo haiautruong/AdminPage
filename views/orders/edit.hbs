@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="col-sm-12">
+        <h2 class="text-uppercase">Chỉnh sửa giao dịch</h2>
+        <form action="/orders/edit" method="POST">
+            {{#with trans}}
+            <div class="form-group">
+                <label for="id">Mã giao dịch</label>
+                <input type="text" class="form-control" name="id" value="{{_id}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="idUser">Mã người dùng</label>
+                <input type="text" class="form-control" value="{{idUser}}" name="idUser" readonly>
+            </div>
+            <div class="form-group">
+                <label for="total">Tổng tiền</label>
+                <input type="text" class="form-control" value="{{{formatCurrency total}}}" name="total" readonly>
+            </div>
+            <div class="form-group">
+                <label for="address">Địa chỉ</label>
+                <input type="text" class="form-control" value="{{address}}" name="address">
+            </div>
+            <div class="form-group">
+                <label for="address">Danh sách sản phẩm</label>
+                {{#each listProducts}}
+                <div style="border-top: 1px solid gray">
+                    <p>Mã sản phẩm: {{idProduct}}</p>
+                    <p>Tên sản phẩm: {{nameProduct}}</p>
+                    <p>Số lượng: {{quantity}}</p>
+                    <p>Đơn giá: {{formatCurrency price}}</p>
+                </div>
+                {{/each}}
+            </div>
+            {{/with}}
+            <div class="form-group">
+                <label for="status"></label>
+                <select class="custom-select form-control" name="status">
+                    <option value="-1" >Đang xử lý</option>
+                    <option value="0" selected>Đang giao</option>
+                    <option value="1" >Đã giao</option>
+                    <option value="-2">Hủy</option>
+
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success form-control">Cập nhật</button>
+
+        </form>
+    </div>
+</div>

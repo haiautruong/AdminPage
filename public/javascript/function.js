@@ -19,6 +19,9 @@ function formatStatus(status) {
     if (status === 1) {
         return "Đã giao"
     }
+    if (status === -2) {
+      return "Hủy"
+  }
 }
 
 function formatCurrency(value) {
@@ -66,9 +69,8 @@ function transactions(id, idUser, address, listProducts, total, status) {
       <td>${statusF}</td>
       <td>
         <div class="btn-group">
-          <a href="/users/edit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>
+          <a href="/orders/edit/${id}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>
             Edit</a>
-          <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
         </div>
       </td>
     </tr>`;

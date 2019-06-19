@@ -74,9 +74,8 @@ const loginStrategy = new LocalStrategy({
     passReqToCallback: true,
 }, (req, username, password, done) => {
     try {
-        console.log("WWTF", username, password);
         Admin.findOne({ 'username': username }, (err, user) => {
-            console.log("TWST",err, user);
+           
             if (err) {
                 done(err);
             }
@@ -85,10 +84,8 @@ const loginStrategy = new LocalStrategy({
                 console.log('Admin not found username', username);
                 return done(null, false, req.flash('message', 'username'));
             }
-            bcrypt.compare(password, user.password, (err, result) => {
-                console.log("ABC", err, result);
-
-                if (err || result == false) {
+            bcrypt.compare(password, user.password, (err, result) => {    
+            if (err || result == false) {
                     return done(null, false, req.flash('message', 'password'));
                 }
 

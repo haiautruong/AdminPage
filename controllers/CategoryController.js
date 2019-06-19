@@ -12,8 +12,14 @@ exports.index = function (req, res) {
 }
 
 exports.add = function (req, res) {
-    let mess = req.flash('message')[0];
-    res.render('categories/add', {mess});
+    if (req.isAuthenticated()) {
+        let mess = req.flash('message')[0];
+        res.render('categories/add', { mess });
+    }
+    else {
+        req.session.returnTo = '/categories/add';
+        res.redirect('/')
+    }
 }
 
 exports.create = function (req, res) {
@@ -24,11 +30,11 @@ exports.create = function (req, res) {
                 console.log("err find category: ", errr);
             }
             else {
-                if (docs){
+                if (docs.length > 0) {
                     req.flash('message', "Danh mục đã tồn tại");
                     res.redirect('/categories/add');
                 }
-                else{
+                else {
                     let col = new category({
                         name
                     });
@@ -44,9 +50,6 @@ exports.create = function (req, res) {
             }
 
         })
-
-        
-
     }
     else {
         req.session.returnTo = '/categories';

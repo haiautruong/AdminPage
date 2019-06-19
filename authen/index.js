@@ -39,12 +39,12 @@ const signupStrategy = new LocalStrategy({
         if (password != confirmPassword) {
             return done(null, false, req.flash('message', 'pass'), req.flash('data', data));
         }
-        
-        Admin.findOne({ 'uasername': username}, (err, user) => {
+
+        Admin.findOne({ 'uasername': username }, (err, user) => {
             if (user) {
                 return done(null, false, req.flash('message', 'uasername'), req.flash('data', data));
             }
-            
+
             const newAdmin = new Admin({
                 username: username,
                 password: password,
@@ -73,24 +73,32 @@ const loginStrategy = new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true,
 }, (req, username, password, done) => {
-
-    Admin.findOne({ 'username': username }, (err, user) => {
-        if (err) {
-            done(err);
-        }
-
-        if (!user) {
-            console.log('Admin not found username', username);
-            return done(null, false, req.flash('message', 'username'));
-        }
-        bcrypt.compare(password, user.password, (err, result) => {
-            if (err || result == false) {
-                return done(null, false, req.flash('message', 'password'));
+    try {
+        console.log("WWTF", username, password);
+        Admin.findOne({ 'username': username }, (err, user) => {
+            console.log("TWST",err, user);
+            if (err) {
+                done(err);
             }
 
-            return done(null, user);
+            if (!user) {
+                console.log('Admin not found username', username);
+                return done(null, false, req.flash('message', 'username'));
+            }
+            bcrypt.compare(password, user.password, (err, result) => {
+                console.log("ABC", err, result);
+
+                if (err || result == false) {
+                    return done(null, false, req.flash('message', 'password'));
+                }
+
+                return done(null, user);
+            });
         });
-    });
+    } catch (e) {
+        console.log(e.message());
+    }
+
 });
 
 module.exports = {

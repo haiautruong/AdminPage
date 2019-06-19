@@ -18,7 +18,7 @@ router.post("/update", (req,res) => controller.saveUpdate(req,res));
 
 router.get("/forget", (req,res) => controller.forget(req,res));
 
-router.post("/", passport.authenticate('login'), (req, res) => {
+router.post("/login", passport.authenticate('login'), (req, res) => {
     console.log("authen login")
     if (req.isAuthenticated()) {
         res.redirect(req.session.returnTo || '/dashboard');

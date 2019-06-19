@@ -1,7 +1,9 @@
 exports.index = (req, res) => {
     if (req.isAuthenticated()) {
-        return res.redirect('/');
+        return res.redirect('/dashboard');
     } else {
+        console.log("ABC");
+
         let mess = req.flash('message')[0];
         let data = req.flash('data')[0];
 

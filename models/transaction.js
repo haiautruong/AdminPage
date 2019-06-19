@@ -15,6 +15,24 @@ let transactionSchema = mongoose.Schema(
     }
 )
 
+transactionSchema.statics.updateATran = (id, address, status) => {
+    const query = {
+        _id: id
+    };
+
+    return Transaction.findOneAndUpdate(query, {
+        address: address,
+        status: status
+    });
+}
+transactionSchema.statics.getOne = (id) => {
+    const query = {
+        _id: id
+    };
+
+    return Transaction.find(query);
+}
+
 transactionSchema.statics.gettransaction = (idUser) => {
     const query = {
         idUser: idUser

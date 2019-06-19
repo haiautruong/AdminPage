@@ -13,6 +13,9 @@ function formatStatus(status){
     if(status === 1){
         return "Đã giao"
     }
+    if(status === -2){
+        return "Hủy"
+    }
 }
 
 function formatCurrency(value){
